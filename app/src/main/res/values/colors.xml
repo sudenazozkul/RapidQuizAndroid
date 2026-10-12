@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="background_start">#FFF7ED</color>
+    <color name="ic_background">#7C3AED</color>
+    <color name="ic_bolt">#FACC15</color>
+</resources>
