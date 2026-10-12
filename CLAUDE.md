@@ -27,4 +27,5 @@ RQ_LIVE=1 ./gradlew testDebugUnitTest --rerun     # canlı backend duman testi
 - M1 İskelet ✅ — proje, tema/renkler, navigasyon (4 taslak ekran), Retrofit/DTO/repository,
   network security config, birim + MockWebServer testleri, canlı `categories/` doğrulandı.
   Font (Plus Jakarta Sans) henüz gömülmedi (`ui/theme/Type.kt` TODO).
-- M2…M6: docs Bölüm 11.
+- M2 Ana Sayfa + Skor Tablosu ✅ — kategori kartları, iskelet/hata/"sunucu uyanıyor" durumları, kategori sekmeli top 10, vurgulu satır (`QuizSessionHolder.lastScore`), ViewModel testleri; emülatörde canlı backend ile doğrulandı.
+- M3…M6: docs Bölüm 11.

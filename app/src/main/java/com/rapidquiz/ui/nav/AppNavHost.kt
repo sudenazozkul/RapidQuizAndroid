@@ -1,7 +1,6 @@
 package com.rapidquiz.ui.nav
 
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.platform.LocalContext
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
@@ -12,6 +11,7 @@ import com.rapidquiz.AppContainer
 import com.rapidquiz.ui.home.HomeScreen
 import com.rapidquiz.ui.home.HomeViewModel
 import com.rapidquiz.ui.leaderboard.LeaderboardScreen
+import com.rapidquiz.ui.leaderboard.LeaderboardViewModel
 import com.rapidquiz.ui.quiz.QuizScreen
 import com.rapidquiz.ui.result.ResultScreen
 
@@ -54,7 +54,18 @@ fun AppNavHost(container: AppContainer) {
             Routes.LEADERBOARD,
             arguments = listOf(navArgument("slug") { type = NavType.StringType; nullable = true; defaultValue = null }),
         ) { entry ->
-            LeaderboardScreen(initialSlug = entry.arguments?.getString("slug"), onHome = { nav.popBackStack(Routes.HOME, false) })
+            val vm: LeaderboardViewModel = viewModel(
+                factory = LeaderboardViewModel.factory(
+                    container.repository,
+                    container.sessionHolder,
+                    entry.arguments?.getString("slug"),
+                ),
+            )
+            LeaderboardScreen(
+                viewModel = vm,
+                onHome = { nav.popBackStack(Routes.HOME, false) },
+                onPlayAgain = { nav.navigate(Routes.quiz(it)) },
+            )
         }
     }
 }
